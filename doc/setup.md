@@ -30,6 +30,24 @@ Reference screenshots to add later for the key GUI steps:
 - ESP32: Add boards + Blink sketch
 - CH340/CH341 notes and udev rule (Linux)
 
+** common approach **
+1. Download the app image
+
+```
+bueche@buecheutuntu2204:~$ cd Downloads
+bueche@buecheutuntu2204:~/Downloads$ ls -lt
+total 199632
+-rw-rw-r-- 1 bueche bueche 201750502 Aug 24 20:49  arduino-ide_2.3.10_Linux_64bit.AppImage
+
+```
+2. make it executable and run it
+
+```
+bueche@buecheutuntu2204:~/Downloads$ chmod +x arduino-ide_*.AppImage
+bueche@buecheutuntu2204:~/Downloads$ ls -lt arduino-ide_*.AppImage
+-rwxrwxr-x 1 bueche bueche 201750502 Aug 24 20:49 arduino-ide_2.3.10_Linux_64bit.AppImage
+
+```
 **macOS (OSX)**
 
 1. Install Arduino IDE
@@ -274,4 +292,4 @@ If you'd like, I can also:
 - Add screenshots for each step.
 - Package an example `README` or create a quickstart script for Ubuntu/ChromeOS to automate udev rule creation.
 
-File updated: [doc/task_1_setup.md](doc/task_1_setup.md)
+File updated: [doc/setup.md](doc/setup.md)
