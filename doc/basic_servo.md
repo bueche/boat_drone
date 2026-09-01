@@ -56,10 +56,7 @@ arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32 ./basic_servo
 Example output.
 
 ```
-$ arduino-cli compile --fqbn esp32:esp32:esp32 ./basic_servo/basic_servo.ino 
-Sketch uses 284559 bytes (21%) of program storage space. Maximum is 1310720 bytes.
-Global variables use 22488 bytes (6%) of dynamic memory, leaving 305192 bytes for local variables. Maximum is 327680 bytes.
-bueche@buecheutuntu2204:~/boat_drone_ws/boat_drone/firmware$ arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32 ./basic_servo
+$ arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32 ./basic_servo
 esptool v5.3.1
 Connected to ESP32 on /dev/ttyUSB0:
 Chip type:          ESP32-D0WD-V3 (revision v3.1)
@@ -106,5 +103,121 @@ arduino-cli monitor -p /dev/ttyUSB0 -c baudrate=115200
 Example output.
 
 ```
+$ arduino-cli monitor -p /dev/ttyUSB0 -c baudrate=115200
+Monitor port settings:
+  baudrate=115200
+  bits=8
+  dtr=on
+  parity=none
+  rts=on
+  stop_bits=1
+
+Connecting to /dev/ttyUSB0. Press CTRL-C to exit.
+�����������������Sweep Angle: 180
+Sweep Angle: 178
+Sweep Angle: 176
+Sweep Angle: 174
+Sweep Angle: 172
+Sweep Angle: 170
+Sweep Angle: 168
+Sweep Angle: 166
+Sweep Angle: 164
+Sweep Angle: 162
+Sweep Angle: 160
+Sweep Angle: 158
+Sweep Angle: 156
+Sweep Angle: 154
+Sweep Angle: 152
+Sweep Angle: 150
+Sweep Angle: 148
+Sweep Angle: 146
+Sweep Angle: 144
+Sweep Angle: 142
+Sweep Angle: 140
+Sweep Angle: 138
+Sweep Angle: 136
+Sweep Angle: 134
+Sweep Angle: 132
+Sweep Angle: 130
+Sweep Angle: 128
+Sweep Angle: 126
+Sweep Angle: 124
+Sweep Angle: 122
+Sweep Angle: 120
+Sweep Angle: 118
+Sweep Angle: 116
+Sweep Angle: 114
+Sweep Angle: 112
+Sweep Angle: 110
+Sweep Angle: 108
+Sweep Angle: 106
+Sweep Angle: 104
+Sweep Angle: 102
+Sweep Angle: 100
+Sweep Angle: 98
+Sweep Angle: 96
+Sweep Angle: 94
+Sweep Angle: 92
+Sweep Angle: 90
+Sweep Angle: 88
+Sweep Angle: 86
+Sweep Angle: 84
+Sweep Angle: 82
+Sweep Angle: 80
+Sweep Angle: 78
+Sweep Angle: 76
+Sweep Angle: 74
+Sweep Angle: 72
+Sweep Angle: 70
+Sweep Angle: 68
+Sweep Angle: 66
+Sweep Angle: 64
+Sweep Angle: 62
+Sweep Angle: 60
+Sweep Angle: 58
+Sweep Angle: 56
+Sweep Angle: 54
+Sweep Angle: 52
+Sweep Angle: 50
+Sweep Angle: 48
+Sweep Angle: 46
+Sweep Angle: 44
+Sweep Angle: 42
+Sweep Angle: 40
+Sweep Angle: 38
+Sweep Angle: 36
+Sweep Angle: 34
+Sweep Angle: 32
+Sweep Angle: 30
+Sweep Angle: 28
+Sweep Angle: 26
+Sweep Angle: 24
+Sweep Angle: 22
+Sweep Angle: 20
+Sweep Angle: 18
+Sweep Angle: 16
+Sweep Angle: 14
+Sweep Angle: 12
+Sweep Angle: 10
+Sweep Angle: 8
+Sweep Angle: 6
+Sweep Angle: 4
+Sweep Angle: 2
+Sweep Angle: 0
+
+[MODE 3] Wiggle Time!
+ -> Wiggle Right!
+ -> Wiggle Left!
+ -> Wiggle Right!
+ -> Wiggle Left!
+ -> Wiggle Right!
+ -> Wiggle Left!
+ -> Wiggle Right!
+ -> Wiggle Left!
+ -> Wiggle Right!
+ -> Wiggle Left!
+
+Resetting to center position for 3 seconds...
+
 ```
 
