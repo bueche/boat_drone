@@ -2,6 +2,46 @@
 
 This next task will involve controlling the servo using your mobile phone. We will activate the wifi on the ESP32 and start a web server. Then we will connect to that webserver from our cell phone and move the rudder using an HTTP interface.
 
+## Background
+
+<p align="center">
+  <img src="./images/concept-1.jpg" alt="ui" width="500">
+</p>
+
+But to underdstand this section there are a few concepts that we need to touch on including:
+
+
+### Client vs. Server
+A client asks for something. A server receives the request, does something, and sends a response. In our airboat project, the cell phone is the client and the ESP32 is the server.
+### Wi-Fi Access Point (AP)
+A Wi-Fi Access Point creates a Wi-Fi network that other devices can join. Normally your home Wi-Fi router acts as the access point. In our project, the ESP32 itself acts as the Wi-Fi Access Point. The phone connects directly to the ESP32—no home router or Internet connection is required.
+### Wi-Fi Network Name (SSID)
+An SSID is simply the name of a Wi-Fi network—the name you see when choosing Wi-Fi on your phone, such as `ESP32-Boat-Control`. If several ESP32 airboats are operating near each other, give each one a different SSID, for example `Syd-ESP32-Boat-Control` and `Ash-ESP32-Boat-Control`, etc. Otherwise you might accidentally connect to another person's nearby boat.
+### Internet vs. Local Wi-Fi
+Wi-Fi and the Internet are not the same thing. Wi-Fi lets nearby devices communicate wirelessly. The Internet connects networks around the world. Our phone and ESP32 communicate over their own local Wi-Fi network without using the Internet.
+### IP Address
+An IP address identifies a device on a network so data can be sent to it. Think of it like the device's network address. In our project, the ESP32's address is 192.168.4.1.
+### IP Address vs. Host Name
+An IP address is numeric, such as 192.168.4.1. A host name is a human-friendly name, such as google.com. Internet systems commonly use DNS to translate host names into IP addresses. In our project, we skip that step and connect directly to 192.168.4.1.
+### Web Server
+A web server is software that listens for HTTP requests and sends HTTP responses. A web server doesn't have to be a giant computer somewhere on the Internet. Our tiny ESP32 is running a web server.
+### HTTP — Hypertext Transfer Protocol
+HTTP is a set of rules clients and servers use to send requests and responses. For example, the phone can send the ESP32 a request such as GET /steer. The ESP32 receives the request, performs the requested action, such as moving the servo, and sends an HTTP response back.
+### URL — Uniform Resource Locator
+A URL tells the client where to send a request and what resource or action it wants. For example, http://192.168.4.1/steer contains three important pieces: `http` tag tells the phone which protocol to use, 192.168.4.1 identifies our ESP32 server, and /steer tells the ESP32 what resource/action we want.
+### HTML — HyperText Markup Language
+HTML describes the contents of a web page: headings, text, buttons, images, and so forth. HTTP and HTML aren't the same thing: HTTP carries the message; HTML can be what's inside the message. Our ESP32 returns HTML that creates the ESP32 Airboat page with its status and LEFT, CENTER, and RIGHT buttons.
+### Network Packet
+A network packet is a small chunk of information traveling across a network. Network messages can be divided into packets, transmitted over Wi-Fi, and put back together at the destination. You can think of packets as small envelopes carrying pieces of a larger message.
+
+For this particular  project, I think this one-line sequence ties all the vocabulary together particularly well:
+
+Phone (client) → joins ESP32's Wi-Fi access point → sends HTTP request to 192.168.4.1 → ESP32 web server receives request → ESP32 moves servo → sends HTTP response containing HTML → phone displays the page.
+
+<p align="center">
+  <img src="./images/concept-2.jpg" alt="ui" width="500">
+</p>
+
 ## Hardware
 No need to make any changes from the previous task. see [here](./basic_servo.md#hardware) for more details on the setup.
 
@@ -196,17 +236,38 @@ $ cat -n ./servo_http/servo_http.ino
    176	    if (!isFailsafeActive && currentSpeed != 90) {
    177	      setMotorSpeed(90); // Hard stop
    178	      isFailsafeActive = true;
-   179	      Serial.println("⚠️ FAILSAFE TRIGGERED: Connection lost! Stopping motor.");
+   179	      Serial.println("FAILSAFE TRIGGERED: Connection lost! Stopping motor.");
    180	    }
    181	  }
    182	}
 
 ```
 
-There is a alot going on but I want to highlight some of the important pieces.
-- TBD 
+There is a alot going on but I want to touch some of the important pieces.
+### important includes
+As noted earlier a program line starts with `#include` it means that the some additional programatic items will be assessible by the program and will be compiled in. The first three lines of the above program include functionality for wifi, the Web Server, and the servo.
 
+```
+     1  #include <WiFi.h>
+     2	#include <WebServer.h>
+     3	#include <ESP32Servo.h>
+```
+### Servo object, servo control pin, and Web server object
 
+In the lines that follow 7-13 the program defines serveral important items including the servo object (called `rudderServo`), the servo control pin number on the board, (`RUDDER_PIN` defined as 18) and a web server object (called `server`). 
+
+```
+     7	Servo rudderServo;
+     8	Servo motorESC;
+     9	
+    10	const int RUDDER_PIN = 18;
+    11	const int ESC_PIN    = 19;
+    12	
+    13	WebServer server(80);
+
+```
+We saw the servo object in the previous sectino.
+There are a few other things defined (like `motorESC` and `ESC_PIN`) that we will cover in the next section. Its not essential to understand exactly how these objects work but it is useful to know that 
 
 ## Compile and upload
 ```
@@ -270,6 +331,24 @@ New upload port: /dev/ttyUSB0 (serial)
 ## connect your phone to the ESP32 wifi 
 
 <p align="center">
-  <img src="./images/esp32-ui-1.jpg" alt="ui" width="400">
+  <img src="./images/set-wifi.jpg" alt="ui" width="400">
 </p>
+
+## Use your Chrome browser on the phone to connect to the web server
+
+type in: http://192.168.4.1
+
+this is the address of the web server on the ESP32's wifi. Once this is down you should see the following UI. The status bar at the top should show, however, "connected".
+
+<p align="center">
+  <img src="./images/esp32-ui-1.jpeg" alt="ui" width="400">
+</p>
+
+In action:
+
+LEFT button → HTTP request → ESP32 → PWM signal → Servo turns rudder LEFT
+
+CENTER button → HTTP request → ESP32 → PWM signal → Servo centers rudder
+
+RIGHT button → HTTP request → ESP32 → PWM signal → Servo turns rudder RIGHT
 

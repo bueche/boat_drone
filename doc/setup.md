@@ -6,16 +6,44 @@ The ESP32 development board is a special controller that has an Arduino-compatib
 
 These instructions focus primarily on common Linux installation (which should also work for ChromeOS).
 
+## Background
 
-**Common steps (overview):**
+Before jumping into this section, I'll define a few concepts that will be helpful to understand what this task is all about.
+
+### Program / Software 
+
+### Functions and (software) Libraries
+
+### Development Computer
+
+### ESP32 controller board
+
+### USB port
+
+### Command line Interface 
+
+### Arduino Development Environment
+
+
+### Arduino code structure
+
+### IDE (Integrated Development Environment)
+
+### Compile
+
+### Upload
+
+
+## Hardware
+For this exercise you need the following parts:
+1. ESP32 and usb cable to the pc
+
+## Installation steps (overview) 
 - Install Arduino command line software (official download or package manager)... or the IDE, but again, we will only be showing the command line.
 - Add the ESP32 Boards Manager URL to Arduino Preferences and install `esp32 by Espressif Systems` from command line (or using the IDE the Boards Manager).
 - Install any vendor USB drivers if your OS needs them (see OS-specific section).
 - Select board `ESP32 Dev Module`, select the serial port, compile and upload the Blink sketch below.
 
-**Contents**
-- Common command line approach
-- Trouble shooting notes
 
 ## Common command lin e approach
 ### 1. create a terminal or command line window
@@ -300,6 +328,104 @@ red off
 red on
 
 ```
+
+## Looking at the code
+
+Now lets dive a little deeper into the code we uploaded to the device.
+
+```
+cd ~/boat_drone/firmware
+cat ./blink/blink.ino
+cat -n ./blink/blink.ino
+```
+These three commands to the following.
+1. `cd ~/boat_drone/firmware` will change the current working directory to be where the code was stored to.
+2. `cat ./blink/blink.ino` will display the contents of the `blink.ino` program file. This is just a text file that has the program high-level language instruction. There are many different programming languages and this one is a variant of C/C++ (not important for this tutorial). `cat` is a program that outputs the contents of a file to the computer screen.
+3. `cat -n ./blink/blink.ino` does the same thing as the previous command except that it also adds in the line numbers for each line in the file. this is useful for this tutorial as it allows us to identify and refer to a specific file.
+
+Example output:
+```
+$ cd ~/boat_drone/firmware
+$ cat ./blink/blink.ino
+#include <Arduino.h>
+
+#define LED_PIN     2    // Controlled via GPIO2 for this kit
+#define BRIGHTNESS  50   // Set safe brightness limit (0-255)
+
+
+void setup() {
+  Serial.begin(115200);
+  // Initialize the WS2812 LED configuration
+ 
+}
+
+void loop() {
+  // Blink Red: neopixelWrite(pin, Red, Green, Blue)
+  neopixelWrite(LED_PIN, BRIGHTNESS, 0, 0);
+  Serial.println("red on");
+  delay(1000);
+
+  // Turn LED Off (All values zero)
+  neopixelWrite(LED_PIN, 0, 0, 0);
+  Serial.println("red off");
+  delay(1000);
+}
+
+$ cat -n ./blink/blink.ino
+     1	#include <Arduino.h>
+     2	
+     3	#define LED_PIN     2    // Controlled via GPIO2 for this kit
+     4	#define BRIGHTNESS  50   // Set safe brightness limit (0-255)
+     5	
+     6	
+     7	void setup() {
+     8	  Serial.begin(115200);
+     9	  // Initialize the WS2812 LED configuration
+    10	 
+    11	}
+    12	
+    13	void loop() {
+    14	  // Blink Red: neopixelWrite(pin, Red, Green, Blue)
+    15	  neopixelWrite(LED_PIN, BRIGHTNESS, 0, 0);
+    16	  Serial.println("red on");
+    17	  delay(1000);
+    18	
+    19	  // Turn LED Off (All values zero)
+    20	  neopixelWrite(LED_PIN, 0, 0, 0);
+    21	  Serial.println("red off");
+    22	  delay(1000);
+    23	}
+
+```
+
+Ok, lets briefly walk through this program.
+
+### #include and other definitions
+The first line of the program is `#include Arduino.h`. This lets our program access some pre-built libraries. For example `neopixelWrite()`  that is used later in the program. Some libraries are "built in", and so we don't need to include them separately. In this case, the ones that provide the functions `delay()` and `Serial.println()` are provided by built-in libraries.
+
+AFter this (lines 3 & 4) two symbols are defined: `LED_PIN` and `BRIGHTNESS`. These are just labels assigned to the numbers (2 and 50) respectivey that we use to make the program more readable. The numbers are used in the functions later.
+
+### program structure
+Notice as described earlier in the background, the Ardunio program structure has two high-level functions: setup() and loop(). When the board is booted, the setup() function is called once, and the loop() one is called repeatedly until the board is stopped or rebooted.
+
+### setup()
+The setup function (lines 7-11) initializes the baud rate (or transmission speed) of the Serial line .. this is pysically the USB cable between the ESP32 and the host development PC. Both sides have to agree on how fast the transmission speed will be.
+
+### loop()
+The loop function (lines 13-23) will repeatedly turn on the pin (show it shines red), then wait for a second and then turn its brightness to zero (causing it to turn off). 
+
+The function `delay(1000)` causes the program to delay 1000 msec (i.e., 1 second) before executing the next instruction.
+
+## Bonus: Enhancing the code
+Now that we have executed the code and understood it a little, it might be good to change it a bit to get more familiarity. The following are some suggested changes to make. After making each of the changes you should compile and upload the program to see if it worked.
+
+### Change 1: Speed up the blinking
+
+To speed up the blinking we can lower the delay from 1000 ms to 250 ms. So the light should blink 4 fimes faster. So `delay(1000);` becomes `delay(250);`
+
+### Change 2: change the output
+
+Insert some other text or add new `Serial.println()` statements
 
 ## FAQ and Trouble shooting
 ### Permission error 
