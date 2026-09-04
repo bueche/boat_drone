@@ -10,28 +10,50 @@ These instructions focus primarily on common Linux installation (which should al
 
 Before jumping into this section, I'll define a few concepts that will be helpful to understand what this task is all about.
 
-### Program / Software 
-
-### Functions and (software) Libraries
+### Program / Software
+A program is a set of instructions that tells a computer what to do. Software is the general term for programs and the information they use. In our project, we write a program that tells the ESP32 how to create Wi-Fi, respond to the phone, and control the airboat. It is beyond the scope of this tutorial explain all aspects of programming, but we will assume the reader will be able to make some simple changes to the programs provided and rebuild the software (compile / upload ... see below).
 
 ### Development Computer
+The development computer is the computer we use to write, compile, and upload our program. The program is created on the development computer, but after we upload it, it runs independently on the ESP32. This tutorial assumes that the development is being accomplished on a computer with a UNIX (or Linux)-like environment.
 
-### ESP32 controller board
+### ESP32 Controller Board
+The ESP32 is a small programmable computer called a microcontroller. It can read inputs, control outputs, communicate using Wi-Fi and Bluetooth, and run the program we upload to it. In our airboat, the ESP32 runs the web server and controls the servo and DC motor.
 
-### USB port
+### USB Port
+USB (Universal Serial Bus) is a connection used to transfer data and provide electrical power between devices. We connect the development computer to the ESP32 using USB so we can upload programs, communicate with the ESP32, and often power the board while developing our program.
 
-### Command line Interface 
+#### Arduino Development Environment
+Arduino provides a collection of software tools that make it easier to write programs for microcontrollers such as the ESP32. It includes a programming language based on C/C++, libraries, a compiler, and tools for uploading programs to the controller board.
 
-### Arduino Development Environment
+### IDE — Integrated Development Environment
+An IDE is a program that brings the tools needed to develop software together in one place. The Arduino IDE, for example, lets us edit our code, compile it, upload it to the ESP32, and view messages from the ESP32.
 
+### Command-Line Interface (CLI)
+A Command-Line Interface lets us control a computer by typing commands instead of clicking buttons and menus. Linux makes extensive use of a command line, or terminal. Arduino also provides command-line tools that can compile and upload Arduino programs without using the graphical Arduino IDE.
 
-### Arduino code structure
+### Variables
+A variable is a named place where a program stores information that may be used or changed. For example, our program might have a variable called servoPosition that stores the current position of the rudder.
 
-### IDE (Integrated Development Environment)
+### Functions
+A function is a named group of instructions that performs a particular job. Instead of writing the same instructions repeatedly, we can put them into a function and then call the function whenever we need that job performed. For example, we might create a function called moveServo().
 
-### Compile
+### Software Library
+A library is a collection of useful code that someone has already written. Instead of writing everything ourselves, we can include a library and use its functions. For example, an ESP32 servo library provides functions for controlling a servo motor without requiring us to write all the low-level PWM code ourselves.
 
-### Upload
+## Arduino Code Structure
+A basic Arduino program—called a sketch—has two especially important functions:
+
+`setup()` — runs once when the ESP32 starts. We use it to initialize things such as Wi-Fi, pins, and the servo.
+
+`loop()` — runs over and over for as long as the ESP32 is operating. We use it for things that need to be continually checked or performed.
+
+A program can also contain our own variables and functions in addition to setup() and loop().
+
+# Compile
+We write programs in a language that humans can reasonably understand, but the ESP32 processor needs machine instructions. Compiling translates our source code into a form that the ESP32 can execute. The compiler also catches many programming mistakes before the program is sent to the ESP32.
+
+# Upload
+Uploading transfers the compiled program from the development computer to the ESP32, usually through the USB connection. The ESP32 stores the program in its memory and begins running it. Once uploaded, the ESP32 can normally run the program without remaining connected to the development computer.
 
 
 ## Hardware
@@ -250,6 +272,13 @@ Sketch uses 285345 bytes (21%) of program storage space. Maximum is 1310720 byte
 Global variables use 22804 bytes (6%) of dynamic memory, leaving 304876 bytes for local variables. Maximum is 327680 bytes.
 $
 ```
+
+What the `arduino-cli compile` command is doing? At a high-level:
+1. translating the high-level source in blink.ino into machine language
+2. pulling in other implicitly or explicitly included library source and compiling it
+3. getting the machine instructures ready to upload to the micro-controller.
+
+see [FAQ what does the arduino compile command do?](#what-does-the-cc-compile-down-to)
 
 ### 9. upload the basic blink sketch
 ```
@@ -484,6 +513,112 @@ ChromeOS (Linux / Crostini)
 - Plug in the ESP32 board.
 - Open system tray (clock) -> Manage USB devices (or Settings -> Linux -> Manage USB devices) and enable sharing the ESP32/CH340 device with the Linux container. If you do not see the device, unplug and replug and check again.
 
+#### What does the C/C++ compile down to?
+As noted earlier there is a step to "compile" the high-level (human readable) program into something that the ESP32's processor can consume. Those instructions are very low level. There is a way to see what the compile program looks like viewing something called *assembly language* which is one step above the binary machine instructions that the CPU executes. I've enclosed a couple of  files in this that illustrate this for `blink.ino`. In the `boat_drone/firmware/blink` directory there are two other files: `blink.asm` and `blink.small.asm`. The fornmer is the complete assembly instructions for the `blink.ino` and all of the included libaries. The `blink.small.asm` contains the subset of this that corresponds to what was written in `blink.ino`. 
+
+Aside from the file line numbers (included with cat -n) there are two sets of columns in this `blink.small.asm. The first represents the address in memory of the instruction. The second is the machine instruction converted from binary into a readable hexidecimal number. The third set is the assembler representation of the machine instruction. .... This looks complicated and cryptic, but is provided just for illustration. 
+```
+cd ~/boat_drone/firmware/
+cat -n ./blink/blink.ino
+cat -n ./blink/blink.small.asm
+
+```
+
+Example output:
+```
+$ cat -n ./blink/blink.ino
+
+     1	#include <Arduino.h>
+     2	
+     3	#define LED_PIN     2    // Controlled via GPIO2 for this kit
+     4	#define BRIGHTNESS  50   // Set safe brightness limit (0-255)
+     5	
+     6	
+     7	void setup() {
+     8	  Serial.begin(115200);
+     9	  // Initialize the WS2812 LED configuration
+    10	 
+    11	}
+    12	
+    13	void loop() {
+    14	  // Blink Red: neopixelWrite(pin, Red, Green, Blue)
+    15	  neopixelWrite(LED_PIN, BRIGHTNESS, 0, 0);
+    16	  Serial.println("red on");
+    17	  delay(1000);
+    18	
+    19	  // Turn LED Off (All values zero)
+    20	  neopixelWrite(LED_PIN, 0, 0, 0);
+    21	  Serial.println("red off");
+    22	  delay(1000);
+    23	}
+
+    $ cat -n ./blink/blink.small.asm
+     1	#define LED_PIN     2    // Controlled via GPIO2 for this kit
+     2	#define BRIGHTNESS  50   // Set safe brightness limit (0-255)
+     3	
+     4	
+     5	void setup() {
+     6	400d1820:       006136                  entry   a1, 48
+     7	  Serial.begin(115200);
+     8	400d1823:       78a082                  movi    a8, 120
+     9	400d1826:       1189                    s32i.n  a8, a1, 4
+    10	400d1828:       082c                    movi.n  a8, 32
+    11	400d182a:       4ed882                  addmi   a8, a8, 0x4e00
+    12	400d182d:       e1a0b2                  movi    a11, 225
+    13	400d1830:       0f0c                    movi.n  a15, 0
+    14	400d1832:       f9fbc1                  l32r    a12, 400d0020 <_stext> (800001c <UserFrameTotalSize+0x7ffff1c>)
+    15	400d1835:       fe7c                    movi.n  a14, -1
+    16	400d1837:       fd7c                    movi.n  a13, -1
+    17	400d1839:       11bb70                  slli    a11, a11, 9
+    18	400d183c:       f9faa1                  l32r    a10, 400d0024 <_stext+0x4> (3ffc2078 <Serial0>)
+    19	400d183f:       0189                    s32i.n  a8, a1, 0
+    20	400d1841:       002825                  call8   400d1ac4 <_ZN14HardwareSerial5beginEmmaabmh>
+    21	  // Initialize the WS2812 LED configuration
+    22	
+    23	}
+    24	400d1844:       0020c0                  memw
+    25	400d1847:       f01d                    retw.n
+    26	400d1849:       000000                  ill
+    27	
+    28	400d184c <_Z4loopv>:
+    29	
+    30	void loop() {
+    31	400d184c:	004136               	entry	a1, 32
+    32	  // Blink Red: neopixelWrite(pin, Red, Green, Blue)
+    33	  neopixelWrite(LED_PIN, BRIGHTNESS, 0, 0);
+    34	400d184f:	00a0d2               	movi	a13, 0
+    35	400d1852:	00a0c2               	movi	a12, 0
+    36	400d1855:	2b3c                	movi.n	a11, 50
+    37	400d1857:	2a0c                	movi.n	a10, 2
+    38	400d1859:	00bca5               	call8	400d2424 <neopixelWrite>
+    39	  Serial.println("red on");
+    40	400d185c:	f9f3b1               	l32r	a11, 400d0028 <_stext+0x8> (3f400120 <_flash_rodata_start>)
+    41	400d185f:	f9f1a1               	l32r	a10, 400d0024 <_stext+0x4> (3ffc2078 <Serial0>)
+    42	400d1862:	005b65               	call8	400d1e18 <_ZN5Print7printlnEPKc>
+    43	  delay(1000);
+    44	400d1865:	e8a3a2               	movi	a10, 0x3e8
+    45	400d1868:	00a025               	call8	400d226c <delay>
+    46	
+    47	  // Turn LED Off (All values zero)
+    48	  neopixelWrite(LED_PIN, 0, 0, 0);
+    49	400d186b:	0d0c                	movi.n	a13, 0
+    50	400d186d:	0c0c                	movi.n	a12, 0
+    51	400d186f:	0b0c                	movi.n	a11, 0
+    52	400d1871:	2a0c                	movi.n	a10, 2
+    53	400d1873:	00bb25               	call8	400d2424 <neopixelWrite>
+    54	  Serial.println("red off");
+    55	400d1876:	f9edb1               	l32r	a11, 400d002c <_stext+0xc> (3f400127 <_flash_rodata_start+0x7>)
+    56	400d1879:	f9eaa1               	l32r	a10, 400d0024 <_stext+0x4> (3ffc2078 <Serial0>)
+    57	400d187c:	0059a5               	call8	400d1e18 <_ZN5Print7printlnEPKc>
+    58	  delay(1000);
+    59	400d187f:	e8a3a2               	movi	a10, 0x3e8
+    60	400d1882:	009ea5               	call8	400d226c <delay>
+    61	}
+    62	400d1885:	f01d                	retw.n
+    63		...
 
 
+```
+
+Learning assembly is beyond the scope of this tutorial. It is very rare for programmers to use it directory (its primary use is motivated by execution speed). 
 -----
