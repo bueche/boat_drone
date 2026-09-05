@@ -58,7 +58,7 @@ IT IS SUPER IMPORTANT NOT TO CONNECT A POS WIRE TO A NEGATIVE (GRND) ONE ... ESP
 We are not using a whimpy batter.
 
 <p align="center">
-  <img src="./images/ESC.jpg" alt="adding in the dc motor" width="600">
+  <img src="./images/ESC.jpg" alt="adding in the dc motor" width="400">
 </p>
 
 ## Hardware
