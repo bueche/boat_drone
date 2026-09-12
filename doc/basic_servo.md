@@ -44,6 +44,7 @@ A nice connection between all three concepts is:
 
 Degrees describe the position we want → the ESP32 represents that position with a PWM signal → the servo converts that signal into physical rotation.
 
+In this project we are using the MG90S 9g Metal Gear Micro Servo. 
 
 ## Hardware
 For this exercise you need the following parts:
