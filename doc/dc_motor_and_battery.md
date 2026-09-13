@@ -19,6 +19,10 @@ A battery stores chemical energy and converts it into electrical energy that can
 
 In this project we are using Blomiky 4 Pack 1S 3.8V 450mAh 80C Lipo Battery with PH2.0 Plug Compatible. It has a rating of steady state 80C output and a peak of 160C. This is a special battery to support drones: it can output 36 Amps and is very light. Initially we used a different battery that had much higher overall capacity (3000 mAh vs 450 mAh), but that other battery was quite limited on how much current it output (~ 1 Amp) and it was heavier. This current limit caused issues since the ESP32 + the ESC + the SErvo motor needed more like 1+ Amp when starting. See discussion below: [Why do we need the special 80C/160C batteries for this application?](#why-do-we-need-the-special-80c160c-batteries-for-this-application)
 
+Also, note the warnings on using battery: [Warning notes on the 80C/160C battery](#warning-notes-on-the-80c160c-battery). Be extra careful to avoid creating a short circuit.
+
+TODO: Add a fuse, switch, and reverse polarity protection to the main battery wire.
+
 ### Ground (GND)
 Ground, usually labeled GND, is the common electrical reference point that we call 0 volts. Different parts of a circuit often need their grounds connected so that they agree on what their electrical signals mean.
 
@@ -153,3 +157,30 @@ Now given what we measured using the USB current monitor (a multi-meter essentia
 | **Max Burst Current** | $\approx 1.5\text{A}$ max | $0.45\text{ Ah} \times 160\text{C} = \mathbf{72.0\text{A}}$ |
 
 But at 36 Amps is this overkill for this application? yes, but it gives us plenty of capacity later for other applications like quad-coptor drones which can have heavier single board computers (SBCs) and multiple DC motors or quadraped rover bots.
+
+
+#### Warning notes on the 80C/160C battery
+
+> ⚠️ **HIGH-POWER BATTERY SAFETY WARNING (LiHV 80C/160C)**
+> 
+> **This micro LiHV battery is NOT a standard AA or USB power bank.**
+> 
+> Unlike household batteries or USB devices that limit their power automatically, this high-performance RC cell has **no internal fuse or safety circuit**. It is engineered to instantly discharge up to **72 Amps** of current—enough energy to turn thin wires into glowing heating elements in less than two seconds.
+
+### Absolute Safety Rules
+
+1. **NEVER SHORT-CIRCUIT THE WIRES**
+   * A short circuit occurs when the Positive (Red) and Negative (Black) wires touch directly, even for a split second. 
+   * **Result:** Wires will instantly melt, ignite plastic insulation, cause severe skin burns, or trigger a battery fire.
+
+2. **NO CHEAP USB ADAPTERS OR SCREW TERMINALS**
+   * Do **not** wire this battery to generic USB breakout boards, thin jumper wires, or loose screw terminals. Use proper, high-current RC connectors (like JST-PH 2.0 or BT2.0) with thick, heat-resistant silicone wire (22–24 AWG).
+
+3. **INSPECT BEFORE EVERY USE**
+   * If the battery feels squishy, looks swollen ("puffed"), smells sweet/chemical, or has been shorted out, **STOP using it immediately**. Move it to a fire-safe location (like a metal box or LiPo guard bag).
+
+4. **USE AN INLINE BENCH FUSE WHEN TESTING**
+   * When prototyping on a breadboard or custom circuit, always place a **3A to 5A fast-blow fuse** on the positive wire. If you make a wiring mistake, the fuse will pop safely instead of starting a wire fire.
+
+5. **CHARGE ONLY ON SPECIFIED CHARGERS**
+   * Charge only under adult/instructor supervision using dedicated LiPo/LiHV chargers set to **0.2A (gentle rate)**. Never leave charging batteries unattended on wooden desks, beds, or paper.
