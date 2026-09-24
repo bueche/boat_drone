@@ -6,7 +6,10 @@ This repository supports a learning activity to build a small boat drone. It is 
 </p>
 
 ## Repository goal in more detail
-There is an experimental small electronic motor boat outlined on one of the 3D printing model websites ([here](https://cults3d.com/en/3d-model/game/motor-boat-rc-small-experimental). Although that website provided the STL files, very little information was provided on the electronics. In addition, some of the STL files had issues as well. In this repository we provide a series of step-by-step activities to take the basic model and enhance it so that it can be controlled by a standard iOS or Android mobile phone. 
+
+Want to build a motor boat drone? In this repository we walk through how to do this...
+
+There is an experimental small electronic motor boat outlined on one of the 3D printing model websites ([here](https://cults3d.com/en/3d-model/game/motor-boat-rc-small-experimental). Although that website provided the STL files so you can 3D print the boat, very little information was provided on the electronics. In addition, some of the STL files had issues as well. In this repository we provide a series of step-by-step activities to take the basic model and enhance it so that it can be controlled by a standard iOS or Android mobile phone. 
 
 ## BOM
 TBD
