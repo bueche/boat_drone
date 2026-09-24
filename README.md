@@ -16,7 +16,7 @@ TBD
 2. [Controlling the Servo (Rudder) using the EPS32 -- (&#9989; V1 doc DONE)](./doc/basic_servo.md). In this task we learn how to setup and control the servo from the ESP32. This servo will eventually power the rudder of the boat drone.
 3. [Controlling the Servo (Rudder) using a mobile phone and ESP32 Ethernet and Webserver -- (&#9989; V1 doc DONE)](./doc/esp32_wifi_and_servo_control.md): We fire up the ESP32's wifi and run a web server to allow us to control the servo from a mobile phone.
 4. [Wiring DC motor and battery -- &#9989; V1 doc DONE](./doc/dc_motor_and_battery.md): In this task we hookup the DC motor and the battery to the boat electronics.
-5. [Everything working off of the battery](./doc/battery_powered.md): In the previous task only the DC motor was working off of the battery. Now lets get everything working all off of the battery.
+5. [Everything working off of the battery -- &#128679; ALMOST DONE](./doc/battery_powered.md): In the previous task only the DC motor was working off of the battery. Now lets get everything working all off of the battery.
 6. [Propelling_the_boat -- &#128679; TBD](./doc/propelling_the_boat.md): An interesting challenge from the original boat...how should we propell it?
 7. [Powering the rudder and propellor -- &#128679; TBD](./doc/rudder_and_propellor.md): This task is about getting a working rudder and propellor.
 8. [Does the boat float? -- &#128679; TBD](./doc/does_the_boat_float.md): With all of the electronics and the other pieces we need to test bouyancy. 

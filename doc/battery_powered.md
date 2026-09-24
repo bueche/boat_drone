@@ -123,7 +123,7 @@ There are several ways to approach this task. Lets first assume that we will do 
 ### Phase 1: initial battery-powers-all wiring
 This section assumes you are starting from the previous tasks wiring (i.e., this [wiring diagram with the battery powering only the DC motor](./images/boat_drone_dev.jpg)).
 
-Note to Jeremy: the wiring I mailed you has this configuration.
+**Note to Jeremy: the wiring I mailed you has this configuration.**
 
 ### Phase 1 testing
 TBD
