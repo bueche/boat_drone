@@ -126,7 +126,31 @@ This section assumes you are starting from the previous tasks wiring (i.e., this
 **Note to Jeremy: the wiring I mailed you has this configuration.**
 
 ### Phase 1 testing
-TBD
+<p align="center">
+  <img src="./images/boat-ui-initial-connect.jpg" alt="boat-ui-initial-connect" width="200">
+</p>
+
+**Important: Make sure the propellor can spin freely**. In the earlier picture it could not. 
+
+#### Test 1: throttle slow 
+First turn on the dc motor. Press the forward slow button on the phone. It should spin reasonably fast (but could spin faster). The display should look as shown. Notice the status.
+<p align="center">
+  <img src="./images/boat-ui-throttle-slow.jpg" alt="boat-ui-initial-connect" width="200">
+</p>
+
+#### Test 2: DC motor can stop
+Touch the "Stop motor" button and you should see the motor stop spinning.
+
+#### TEST 3: Servo turns
+While the DC motor is not spinning, confirm that the servo controls on the app still work correctly for servo.
+
+#### TEST 4: DC motor and Servo
+Turn on the DC motor and then confirm you can control the servo motor at the same time. This test might fail due to the voltage drop discussed above.
+
+#### TEST 5: throttle fast and servo
+Turn on the throttle to fast from slow and from stop. Also try to move the servo. 
+
+Again, this test will likely fail due to the interference noted above. Failure means either that the dc motor stops, the servo stops moving, or the wifi reboots
 
 ### Phase 2: Final battery-powers-all wiring
 This section assumes you are starting from the initial battery-powers-all wiring as shown in the [earlier wiring diagram](./images/boat_drone_wiring.jpg).
@@ -158,4 +182,7 @@ The steps are annotated below.
 </p>
 
 ## Phase 2 testing
-TBD
+- redo tests 1 - 5.
+- If you didn't see any issues with the phase 1 testing, then pull the 470 uF capacitor out of the circuit and attempt to tests 1 - 5 again. Re-insert the capacitor afterwards.
+
+
