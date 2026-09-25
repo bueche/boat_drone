@@ -318,7 +318,7 @@ Whenever you see `#include` means that the objects and logic for the library or 
 
 ### Initializing the servo
 
-TBD
+
 
 ```
     16	  // Allow allocation of all timers for ESP32 PWM channels

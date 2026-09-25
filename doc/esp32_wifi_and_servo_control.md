@@ -269,6 +269,11 @@ In the lines that follow 7-13 the program defines serveral important items inclu
 We saw the servo object in the previous sectino.
 There are a few other things defined (like `motorESC` and `ESC_PIN`) that we will cover in the next section. Its not essential to understand exactly how these objects work but it is useful to know that 
 
+### Web page served up by the Web server 
+Lines 26 - 85 have the syntax for the web page being served up by the web server. There is along going on here and its beyond the scope of this tutorial to cover it in much detail. 
+
+**Note: need to add more here.**
+
 ## Compile and upload
 ```
 cd ~/boat_drone/firmware
@@ -331,7 +336,7 @@ New upload port: /dev/ttyUSB0 (serial)
 ## connect your phone to the ESP32 wifi 
 
 <p align="center">
-  <img src="./images/set-wifi.jpg" alt="ui" width="400">
+  <img src="./images/set-wifi.jpg" alt="ui" width="200">
 </p>
 
 ## Use your Chrome browser on the phone to connect to the web server
@@ -341,7 +346,7 @@ type in: http://192.168.4.1
 this is the address of the web server on the ESP32's wifi. Once this is down you should see the following UI. The status bar at the top should show, however, "connected".
 
 <p align="center">
-  <img src="./images/esp32-ui-1.jpeg" alt="ui" width="400">
+  <img src="./images/esp32-ui-1.jpeg" alt="ui" width="200">
 </p>
 
 In action:

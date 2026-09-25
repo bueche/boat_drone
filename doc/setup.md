@@ -8,7 +8,7 @@ These instructions focus primarily on common Linux installation (which should al
 
 ## Background
 
-Before jumping into this section, I'll define a few concepts that will be helpful to understand what this task is all about.
+Before jumping into this section, I'll define a few concepts that will be helpful to understand what this task is all about. I'm not assuming the reader has much sofware or computer experience.
 
 ### Program / Software
 A program is a set of instructions that tells a computer what to do. Software is the general term for programs and the information they use. In our project, we write a program that tells the ESP32 how to create Wi-Fi, respond to the phone, and control the airboat. It is beyond the scope of this tutorial explain all aspects of programming, but we will assume the reader will be able to make some simple changes to the programs provided and rebuild the software (compile / upload ... see below).
@@ -35,7 +35,7 @@ A Command-Line Interface lets us control a computer by typing commands instead o
 A variable is a named place where a program stores information that may be used or changed. For example, our program might have a variable called servoPosition that stores the current position of the rudder.
 
 ### Functions
-A function is a named group of instructions that performs a particular job. Instead of writing the same instructions repeatedly, we can put them into a function and then call the function whenever we need that job performed. For example, we might create a function called moveServo().
+A function is a named group of instructions that performs a particular job. Instead of writing the same instructions repeatedly, we can put them into a function and then call the function whenever we need that job performed. For example, we might create a function called `moveServo()` and within it are a number of instructions to initialize and cause the servo to to move to a specific position.
 
 ### Software Library
 A library is a collection of useful code that someone has already written. Instead of writing everything ourselves, we can include a library and use its functions. For example, an ESP32 servo library provides functions for controlling a servo motor without requiring us to write all the low-level PWM code ourselves.
@@ -58,7 +58,7 @@ Uploading transfers the compiled program from the development computer to the ES
 
 ## Hardware
 For this exercise you need the following parts:
-1. ESP32 and usb cable to the pc
+1. ESP32 and usb cable to the ChromeBook, laptop, or PC you are using.
 
 ## Installation steps (overview) 
 - Install Arduino command line software (official download or package manager)... or the IDE, but again, we will only be showing the command line.
@@ -68,8 +68,11 @@ For this exercise you need the following parts:
 
 
 ## Common command lin e approach
+
+For each step I try to provide an exact recipe for doing the task from the command line as well as some example output (so you know what to expect).
+
 ### 1. create a terminal or command line window
-We will be using a command line interface rather than a windowed IDE. All of the operating systems support this: macOS, Ubuntu, Chrome OS, and even Windows. Starting such a window varies per OS. 
+We will be using a command line interface rather than a windowed IDE. All of the operating systems support this: macOS, Ubuntu, Chrome OS, and even Windows. Launching such a command-line (or terminal) window is accomplished differently for the above operating systems. 
 
 ### 2. Download the command line software
 Run the following on you linux command line.
@@ -78,7 +81,7 @@ mkdir -p ~/.local/bin
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
 ```
 Note:
- - ~/.local/bin is a path to a hidden directory in linux (files that start with "." are hidden).  the mkdir command will create it 
+ - `~/.local/bin` is a path to a hidden directory in linux (files that start with "." are hidden).  the mkdir command will create it 
  - This command should install the appropriate code on your system, but more code will need to be downloaded later.
  - the dollar sign "$" is the symbol for the prompt. when you copy these commands don't add that when you copy the above commands.
 
@@ -86,16 +89,20 @@ Note:
 
 ```
  $ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/.local/bin sh
-Installing in /home/bueche/Downloads/bin
+Installing in /home/bueche/.local/bin
 ARCH=ARM64
 OS=Linux
 Using curl as download tool
 Downloading https://downloads.arduino.cc/arduino-cli/arduino-cli_1.5.1_Linux_ARM64.tar.gz
-install.sh: arduino-cli not found. You might want to add "/home/bueche/Downloads/bin" to your $PATH
+install.sh: arduino-cli not found. You might want to add "/home/bueche/.local/bin" to your $PATH
 arduino-cli  Version: 1.5.1 Commit: 01f3d4f2b Date: 2026-06-05T10:22:11Z installed successfully in /home/bueche/.local/bin
 $ 
 ```
-You should also make sure that ~/.local/bin is part of your path.
+You should also make sure that ~/.local/bin is part of your path. You can do this by adding `export PATH=$PATH:~/.local/bin` to `~/.bashrc` using an editor (like vi) or just by running:
+```
+echo "export PATH=$PATH:~/.local/bin" >> `~/.bashrc
+```
+and the `>>` is very important here. To confirm run `tail ~/.bashrc`.
 
 
 ### 3. Basic test of the installation
@@ -118,7 +125,7 @@ arduino-cli core install esp32:esp32
 
 ```
 
-And example of these commands being run and their output.
+An example of these commands being run and their output.
 ```
 $ arduino-cli config init
 arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
@@ -201,6 +208,7 @@ if you get an error later that says permission denied to access `/dev/ttyUSB0` t
 ```
 chmod ugo+rwx /dev/ttyUSB0
 ```
+
 ### 7. pull the code from github
 The next two commands will do the following: (1) change the current working directory to the home directory and (2) download the git project directory within a directory called: `boat_drone`.
 ```
@@ -620,5 +628,7 @@ $ cat -n ./blink/blink.ino
 
 ```
 
-Learning assembly is beyond the scope of this tutorial. It is very rare for programmers to use it directory (its primary use is motivated by execution speed). 
+Learning assembly language is beyond the scope of this tutorial. It is very rare for programmers to use it directory (its primary use is motivated by execution speed). 
+
+
 -----

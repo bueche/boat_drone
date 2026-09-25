@@ -104,7 +104,7 @@ Next steps:
 ### Testing
 Now at this point you should see the full UI as shown below.
 <p align="center">
-  <img src="./images/boat-ui-initial-connect.jpg" alt="boat-ui-initial-connect" width="400">
+  <img src="./images/boat-ui-initial-connect.jpg" alt="boat-ui-initial-connect" width="200">
 </p>
 
 **Important: Make sure the propellor can spin freely**. In the earlier picture it could not. 
@@ -112,7 +112,7 @@ Now at this point you should see the full UI as shown below.
 #### Test 1: throttle slow 
 First turn on the dc motor. Press the forward slow button on the phone. It should spin reasonably fast (but could spin faster). The display should look as shown. Notice the status.
 <p align="center">
-  <img src="./images/boat-ui-throttle-slow.jpg" alt="boat-ui-initial-connect" width="400">
+  <img src="./images/boat-ui-throttle-slow.jpg" alt="boat-ui-initial-connect" width="200">
 </p>
 
 #### Test 2: DC motor can stop
