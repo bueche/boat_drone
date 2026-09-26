@@ -28,7 +28,7 @@ In this task we will explore possible techniques for mounting the DC motor and p
 The outcome should look something like as shown below.
 
 <p align="center">
-  <img src="./images/boat-drone-development.jpg"" alt="ui" width="300">
+  <img src="./images/mounting-motor.jpeg"" alt="ui" width="300">
 </p>
 
 
