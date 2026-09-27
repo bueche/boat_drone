@@ -17,7 +17,7 @@ Weight is the force pulling your boat straight down toward the bottom of the pon
 Now the difference between weight and mass can seem confusing. A kitchen scale is measuring weight but its units are grams, not grams-force or Newtons. But the scale assumes you are standing on the surface of earth. So we will say that a scale approximates the mass of an object. The diagram below kind of illustrates the differences between weight and mass by considering an object with a certain mass, that is weighed on mars and earth.
 
 <p align="center">
-  <img src="./images/mass.v.weight.jpg" alt="mass vs. weight" width="200">
+  <img src="./images/mass.v.weight.jpg" alt="mass vs. weight" width="300">
 </p>
 
 ## Buoyancy (Buoyant Force)
@@ -26,7 +26,7 @@ Think of trying to push an empty plastic soda bottle straight down under water. 
 Buoyancy is the invisible "upward hand" of the water pushing your  boat up. If Buoyant Force = Total Weight, the boat floats. If Weight > Buoyant Force, the boat sinks.
 
 <p align="center">
-  <img src="./images/buoyancy.2.jpg" alt="buoyancy force" width="200">
+  <img src="./images/buoyancy.2.jpg" alt="buoyancy force" width="300">
 </p>
 
 ## Displacement (Archimedes' Principle)
@@ -35,7 +35,7 @@ Imagine filling a bathtub to the very brim. When you climb in, water spills over
 To float a 300-gram RC boat, the hull shape must push away at least 300 grams (300 mL) of water before the waterline reaches the top edge of the hull.
 
 <p align="center">
-  <img src="./images/water.displacement.jpg" alt="water displacement" width="200">
+  <img src="./images/water.displacement.jpg" alt="water displacement" width="300">
 </p>
 
 ## Density
@@ -63,7 +63,7 @@ Imagine a bucket floating in a pool. Draft is how much of the bucket is submerge
 Provides your safety margin against flooding. If you add heavy electronics and increase the boat's mass, the draft increases and the freeboard decreases—leaving less safety clearance before waves splash over the sides into the hull.
 
 <p align="center">
-  <img src="./images/buoyancy.1.jpg" alt="draft and feeboard" width="200">
+  <img src="./images/buoyancy.1.jpg" alt="draft and feeboard" width="300">
 </p>
 
 
@@ -89,11 +89,11 @@ Now, if we make the boat larger then it will hold more mass. How do we know how 
 The process to scale the boat up is illustrated below. First, you start with the boat parts as originally sized. Then you select all of the parts. Then hit "s" (for scaled) and enter the scaling factor (going from 100 to 150). Once you hit enter it scales in all dimensions and the new size becomes the new 100 scaling factor.
 
 <p align="center">
-  <img src="./images/original.3d.boat.jpg" alt="original 3d boat width="300">
-  <img src="./images/select.all.parts.jpg" alt="select all parts" width="300">
-  <img src="./images/set_scaling_factor.jpg" alt="set scaling factor to 150" width="300">
-  <img src="./images/boat.scaled.jpg" alt="boat scaled" width="300">
-  <img src="./images/bigger.boat.ready.to.print.jpg" alt="boatd ready to print" width="300">
+  <img src="./images/original.3d.boat.jpg" alt="original 3d boat" width="400">
+  <img src="./images/select.all.parts.jpg" alt="select all parts" width="400">
+  <img src="./images/set_scaling_factor.jpg" alt="set scaling factor to 150" width="400">
+  <img src="./images/boat.scaled.jpg" alt="boat scaled" width="400">
+  <img src="./images/bigger.boat.ready.to.print.jpg" alt="boatd ready to print" width="400">
 </p>
 
 Now if we repeat our capacity test (filling it with water and weighing the water), we find that it can hold a maximum of 252 grams. So given our electronics mass of 140 grams, we have a 100 gram headroom for the boat top, the motor holder, the servo and rudder mechanism, and any other materials needed to keep the boat dry.
