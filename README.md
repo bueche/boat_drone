@@ -25,7 +25,7 @@ TBD
 4. [Wiring DC motor and battery -- &#9989;](./doc/dc_motor_and_battery.md): In this task we hookup the DC motor and the battery to the boat electronics.
 5. [Everything working off of the battery -- &#9989;](./doc/battery_powered.md): In the previous task only the DC motor was working off of the battery. Now lets get everything working all off of the battery.
 6. [Propelling_the_boat -- &#9989;](./doc/propelling_the_boat.md): An interesting challenge from the original boat...how should we propell it?
-7. [Does the boat float? -- &#128679; TBD](./doc/does_the_boat_float.md): With all of the electronics and the other pieces we need to test bouyancy. How can we do this without a water-proofed boat?
+7. [Does the boat float? -- &#9989;](./doc/does_the_boat_float.md): With all of the electronics and the other pieces we need to test bouyancy. How can we do this without a water-proofed boat?
 8. [Wifi range testing -- &#128679; TBD](./doc/wifi_range_testing.md): how far can the boat be away from the cell phone? what happens when we go out of that range? can we improve that behavior?
 9. [A working rudder and propellor -- &#128679; TBD](./doc/rudder_and_propellor.md): This task is about getting a working rudder and propellor. All of the electrical work has been done earlier. Now we need to make sure they manipulate the boat as desired.
 10. [Water-proofing the boat -- &#128679; TBD](./doc/waterproofing_the_boat.md): water and electricity don't mix well. Worse yet, water is very corrosive.
