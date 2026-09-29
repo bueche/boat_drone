@@ -113,7 +113,7 @@ The wiring is illustrated below, both the logical and example physical pictured 
 
 <p align="center">
   <img src="./images/boat_drone_wiring_final.jpg" alt="adding in the switch etc" width="800">
-  <img src="./images/part2-wiring-5.jpeg" alt="picture of physical example final" width="500">
+  <img src="./images/part2-wiring-5.jpeg" alt="picture of physical example final" width="700">
 </p>
 
 ## Summary of steps
@@ -157,7 +157,7 @@ This section assumes you are starting from the initial battery-powers-all wiring
 
 The steps are annotated below.
 <p align="center">
-  <img src="./images/final.physical.annotated.jpg" alt="final physical annotated with steps" width="400">
+  <img src="./images/final.physical.annotated.jpg" alt="final physical annotated with steps" width="600">
 </p>
 
 1. Connect the 3A fuse into the fuse containing wire expose a bit more wiring on the ends of this.
@@ -178,7 +178,8 @@ The steps are annotated below.
 6. Wire up the larger 470 uF capacitor to the servo flow and the ESP32 input power flow. Again, two separate capacitors are needed. This is illustrated below. Longer wire should be in the positive and the shorter in the negative flow.
 
 <p align="center">
-  <img src="./images/part2-wiring-2.jpeg" alt="picture of physical capacitor connection 2" width="300">
+  <img src="./images/part2-wiring-2.jpeg" alt="picture of physical capacitor for servo" width="300">
+  <img src="./images/capacitor.for.esp32.jpg" alt="picture of physical capacitor for esp32" width="300">
 </p>
 
 ## Phase 2 testing
