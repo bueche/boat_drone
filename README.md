@@ -9,10 +9,11 @@ This repository supports a learning activity to build a small boat drone. It is 
 
 Want to build a motor boat drone? In this repository we walk through how to do this...
 
-There is an experimental small electronic motor boat outlined on one of the 3D printing model websites ([here](https://cults3d.com/en/3d-model/game/)motor-boat-rc-small-experimental). 
+There is an experimental small electronic motor boat outlined on one of the 3D printing model websites ([here](https://cults3d.com/en/3d-model/game/motor-boat-rc-small-experimental)). 
 
 Although that website provided the STL files so you can 3D print the boat, very little information was provided on the electronics. In addition, some of the STL files had issues as well. In this repository we provide a series of step-by-step activities to take the basic model and enhance it so that it can be controlled by a standard iOS or Android mobile phone. 
 
+An airboat drone is an example of a remotely operated vehicle (ROV) and its easier to build than an underwater ROV for a number of reasons. If you have further interest in this area I'd recommend a text book that is quite comprehensive for underwater robotics: [Underwater Robotics: Science, Design, and Fabrication](https://shop.robonation.org/products/underwater-robotics-science-design-and-fabrication).
 
 ## Bill of Materials
 TBD
@@ -37,3 +38,4 @@ TBD
 &#128679; = initial documentation to-be-written
 
 If you have any questions, run into any issues, or come up with a better way to approach a task, please enter an **issue** for thie github repository to track the item.
+
