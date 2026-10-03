@@ -14,7 +14,7 @@ The downward pulling force exerted on an object's mass by gravity, measured in N
 Imagine holding that same water balloon in your hand. Weight is how hard the balloon pushes down against your palm because Earth's gravity is pulling on it.
 Weight is the force pulling your boat straight down toward the bottom of the pond. For the boat to float, this downward force must be completely balanced by an equal upward force.
 
-Now the difference between weight and mass can seem confusing. A kitchen scale is measuring weight but its units are grams, not grams-force or Newtons. But the scale assumes you are standing on the surface of earth. So we will say that a scale approximates the mass of an object. The diagram below kind of illustrates the differences between weight and mass by considering an object with a certain mass, that is weighed on mars and earth.
+Now the difference between weight and mass can seem confusing. A kitchen scale is measuring weight but its units are grams, not grams-force or Newtons but often in  pounds (lbs). Pounds (lbs) are a measure of force. But the scale assumes you are standing on the surface of earth. So when displaying grams we will say that a scale approximates the mass of an object. Or in the case of a scale is really showing the grams-force weight of the object. The diagram below kind of illustrates the differences between weight and mass by considering an object with a certain mass, that is weighed on mars and earth.
 
 <p align="center">
   <img src="./images/mass.v.weight.jpg" alt="mass vs. weight" width="300">
@@ -81,7 +81,7 @@ How much do your electronics weigh? (or how much mass do they have approximately
 
 ### Can the original boat float with the electronics?
 
-So, now we need to determine how much mass the boat can carry before it sinks. There are two equivalent ways to do this. First, you can take a collection of nails or screws and add them to the boat while its in water until it sinks. Given our earlier set of definitions, we can get an equivalent mass measurement by filling the boat with water. At the point it is filled with water the freeboard is zero. You can weigh a glass and then fill it with water that is filling the boat, and then get the difference. When we did this the original boat could carry approximately 76 grams (glass with water from boat (342 g) - weight of empty glass (248g) = 76 grams). So our electronics would easily sink the original boat!
+So, now we need to determine how much weight the boat can carry before it sinks. There are two equivalent ways to do this. First, you can take a collection of nails or screws and add them to the boat while its in water until it sinks. Given our earlier set of definitions, we can get an equivalent mass measurement by filling the boat with water. At the point it is filled with water the freeboard is zero. You can weigh a glass and then fill it with water that is filling the boat, and then get the difference. When we did this the original boat could carry approximately 76 grams (glass with water from boat (342 g) - weight of empty glass (248g) = 76 grams). So our electronics would easily sink the original boat!
 
 ### Resizing the boat
 Now, if we make the boat larger then it will hold more mass. How do we know how large to make it? Well for the 3D printer that we have, we were limited to scaling it up by a factor of 1.5 (that is making it 50% bigger in every dimension). Trying to go beyond this caused errors because the boat was too high.
@@ -123,3 +123,10 @@ First four pieces come in at 24 grams (see below).
 
 The estimated mass of the top is about 25 grams as well. So our water proofing mass has about 25 to 30 grams to be safe.
 
+## Questions to worry about..
+
+All of this seems like it should play out nicely, but the real world is often not so nice. Here are some questions that ought to be pondered and might cause us to tune things.
+1. what is the exact best layout of the electronics in the boat? We could run into trouble with a see-saw event.
+2. should we have made our 3D printed boat less denss? we just picked the defaults but could have traded the durability of the structure for a less-dense, more buoyant version.
+3. will the speed of the boat impact its draft and freehold? this is likely.
+4. In the ocean (or busy lake)  how big of a broadside wave can the boat handle before it tips over and takes in too much water? (we don't expect it to be watertight)
