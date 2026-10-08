@@ -37,7 +37,7 @@ Our water proof container will be made of 5.12"W x 8.27"H mylar bags. We chose t
 Our goal will be to keep most of the electronics within a water-tight container, but some of them necessarily have to be outside of it: namely the servo and the dc-motor. Our servo, the HobbyPark Waterproof 12g Micro Servo Motor Metal Gear Arduino Servo Digital Servo Mini 4.6kg High Torque HV, is a special water-proof one (see below). 
 
 <p align="center">
-  <img src="./images/wp-servo.jpg" alt="servo in water" width="300">
+  <img src="./images/wp-servo.jpg" alt="servo in water" width="600">
 </p>
 
 The dc motor is not water proof by design, but in fresh water it should be possible to reuse the motor (after drying) if the boat capsizes. Apparently spraying WD-40 afterwards will be helpful. 
@@ -127,7 +127,7 @@ Success? Well, if water got in, then it came in via one of the three entry ways:
 The high-level design for our water proof electronics is shown below. We will essentially use two bags. One for the switch, battery, and fuse and the other for the rest of the electronics except for the servo motor and dc-motor.
 
 <p align="center">
-  <img src="./images/HLD-waterproof-design.jpg" alt="evaluate" width="300">
+  <img src="./images/HLD-waterproof-design.jpg" alt="evaluate" width="700">
 </p>
 
 In addition, not shown on the diagram above is a need to connect the two motors to the circuit outside of the bag to ensure that if they fail we don't have to rebuild our water proof enclosure. In addition, it would be beneficial to be able to remove most of the electronics without having to rebuild the enclosure.
