@@ -26,7 +26,7 @@ These platic joints are used to allow you to encase your electronics while runni
 
 
 ### Waterproof container
-Our water proof container will be made of 5.12"W x 8.27"H mylar bags. We chose this because they are durable and flexible. Flexibility is useful given the contours of the boat.
+Our water proof container will be made of 5.12"W x 8.27"H mylar bags. We chose this because they are durable and flexible. Flexibility is useful given the contours of the boat. In addition, we are absolutely ignoring pressure and assume that if the boat capsizes it will remain floating (this should be tested).
 
 <p align="center">
   <img src="./images/wp-mylar-bag.jpg" alt="mylar bag" width="300">
@@ -131,3 +131,11 @@ The high-level design for our water proof electronics is shown below. We will es
 </p>
 
 In addition, not shown on the diagram above is a need to connect the two motors to the circuit outside of the bag to ensure that if they fail we don't have to rebuild our water proof enclosure. In addition, it would be beneficial to be able to remove most of the electronics without having to rebuild the enclosure.
+
+## Optimizing the wiring for the enclosure
+
+Ok. Its now time to get the wiring re-arranged so that our electronics fit within the mylar bags. One of the issues with the mylar bags is that although they are 5x8 inches (length and width) they are not uniform and are somewhat cramped on the height perspective. In addition, we have been wiring up our circuit without much thought into how we were going to get it to fit into the boat. This section is all about optimizing that wiring so that we can easily place the electronics in and out of the bag. In addition, we need to secure some of the wiring so that this placement doesn't cause any connections to come loose.
+
+Now the attentive reader will notice that we haven't soldered anything: all of the connections are through connectors that are reversible. This is intentional as it allows us to redo wiring easily, but at this point in the project it can lead to shaky wires. So the reader might want to start to solder, but we will rely on electrical tape and other approaches to make it easy to redo and change.
+
+more to come ....
