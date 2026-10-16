@@ -2,9 +2,9 @@
 
 This section is our first effort on water proofing the boat. Our focus will be on the electonics. That is, our goal will be to ensure that the electronics do not get wet (and compromised) if the boat takes on water from the top.  Later, we will explore how to prevent water from entering the boat from the top. 
 
-Now that being said, its appropriate to set expectations: we are not building a boat that is designed to work while submerged, rather, we are trying to ensure that our boat doesn't fail if it gets wet or is briefly submerged. This is more water-resisting than water-proofing. Again, this topic is coverted in great detail in [Underwater Robotics: Science, Design, and Fabrication](https://shop.robonation.org/products/underwater-robotics-science-design-and-fabrication) and we encourage you to read that text in more detail.
+Now that being said, its appropriate to set expectations: we are not building a boat that is designed to work while submerged, rather, we are trying to ensure that our boat doesn't fail if it gets wet or is briefly submerged. This is more water-resisting than water-proofing. Again, this topic is covered in great detail in [Underwater Robotics: Science, Design, and Fabrication](https://shop.robonation.org/products/underwater-robotics-science-design-and-fabrication) and we encourage you to read that text in more detail.
 
-In addition, this is likely the most experimental set of tasks and this section is likely going to be revised over time. 
+In addition, this is likely the most experimental set of tasks and this section is likely going to be revised over time. See notes at the bottom for current status.
 
 ## Definitions
 
@@ -17,11 +17,11 @@ In addition, this is likely the most experimental set of tasks and this section 
 ### Electrical conductivity
 
 ### Waterproof cord connector joints
-These platic joints are used to allow you to encase your electronics while running a wire to another component. The glans we are using are shown (in break out form) below. There are two water proof dynmaics going on here. The first is for the main body, washer and nut to create a water tight seal for the glan to our water proof container. The second is for the clamping jaws and force-tight head to seal the around the protruding wires. A mounted glan is shown in the second picture.
+These platic joints are used to allow you to encase your electronics while running a wire to another component. The glands we are using are shown (in break out form) below. There are two water proof dynmaics going on here. The first is for the main body, washer and nut to create a water tight seal for the gland to our water proof container. The second is for the clamping jaws and force-tight head to seal the around the protruding wires. A mounted gland is shown in the second picture.
 
 <p align="center">
-  <img src="./images/water-proof-glan-view.jpg" alt="exploded view of glan" width="400">
-  <img src="./images/water-proof-glan-mounted.jpg" alt="mounted glan example" width="400">
+  <img src="./images/water-proof-glan-view.jpg" alt="exploded view of gland" width="400">
+  <img src="./images/water-proof-glan-mounted.jpg" alt="mounted gland example" width="400">
 </p>
 
 
@@ -31,6 +31,8 @@ Our water proof container will be made of 5.12"W x 8.27"H mylar bags. We chose t
 <p align="center">
   <img src="./images/wp-mylar-bag.jpg" alt="mylar bag" width="300">
 </p>
+
+note: 10/15/2026: the 5x8 mylar bags don't work. The height issue makes it too hard to put the wired electronics completely into the bag. Exploring alternative with quart size zip lock freezer bag. Looks promising but electronics need to be secured still.
 
 ### Electronics in the water-resistant container and electronics outside of it
 
@@ -75,21 +77,23 @@ There are a number of ways we can secure our electronics, but its helpful to out
 
 ## Detailed steps for water proof wiring test
 
-Before sealing our electronics its advisable to test out our water proofing technique. So in this exercise we will just test out the technique. You need a weight, a bag, a single glan, a wire,  electrical tape, plus a pot (to submerge the bag) and water. 
+Before sealing our electronics its advisable to test out our water proofing technique. So in this exercise we will just test out the technique. You need a weight, a bag, a single gland, a wire,  electrical tape, plus a pot (to submerge the bag) and water. 
+
+Note: the general technique is meant should work even if we vary the size of the bag.
 
 ### Step 1: widen our wire
-Now our glans wire compression diameter and our wire diameter are mismatched: the glan is to large to seal the wire(s) by itself. Hence we will use electrical tape to widen the wire so it will work. This is shown in the picture below.
+Now our glans wire compression diameter and our wire diameter are mismatched: the gland is to large to seal the wire(s) by itself. Hence we will use electrical tape to widen the wire so it will work. This is shown in the picture below.
 
 <p align="center">
-  <img src="./images/wp-prepping-wire-for-glan.jpg" alt="prepping wire for glan" width="300">
+  <img src="./images/wp-prepping-wire-for-glan.jpg" alt="prepping wire for gland" width="300">
 </p>
 
-### Step 2: Mount the glan and seal glan to bag
+### Step 2: Mount the gland and seal gland to bag
 
 cCut a small hole in the bag and mount the main body into the bag. this is shown below. It is virtuous to make the hole smaller than the main body threads so that you use the flexibility of the mylar to ensure its a tight fit. Its also virtuous to make the hole clean without any tears that could expand later.
 
 <p align="center">
-  <img src="./images/wp-mount-glan-in-bag.jpg" alt="mounting glan to mylar bag" width="300">
+  <img src="./images/wp-mount-glan-in-bag.jpg" alt="mounting gland to mylar bag" width="300">
 </p>
 
 Once the bottom of the main body is pushed through the hole then seal it on the inside by screwing in the nut with the washer as shown in the earlier picture. It is important to twist this tightly so that water won't pass through this hole.
@@ -98,9 +102,9 @@ Once the bottom of the main body is pushed through the hole then seal it on the 
   <img src="./images/wp-seal-inner-bag.jpg" alt="sealing inner part of bag" width="300">
 </p>
 
-### Step 3: secure the wire in the glan
+### Step 3: secure the wire in the gland
 
-At this point you can pull or push the wire through the glan hole and then tighten the glan so that it grips on the electrical tape used to widen the wire. Again, tighten securely so that this is watertight. This is shown below.
+At this point you can pull or push the wire through the gland hole and then tighten the gland so that it grips on the electrical tape used to widen the wire. Again, tighten securely so that this is watertight. This is shown below.
 
 <p align="center">
   <img src="./images/wp-pull-wire-and-tighten.jpg" alt="pull or push wire and tighen" width="300">
@@ -138,4 +142,8 @@ Ok. Its now time to get the wiring re-arranged so that our electronics fit withi
 
 Now the attentive reader will notice that we haven't soldered anything: all of the connections are through connectors that are reversible. This is intentional as it allows us to redo wiring easily, but at this point in the project it can lead to shaky wires. So the reader might want to start to solder, but we will rely on electrical tape and other approaches to make it easy to redo and change.
 
-more to come ....
+note: 10/16/2026 more to come. Current efforts are focusing around:
+
+1. securing the electronics to a custom board and the wires (without soldering)
+2. gland placement to support the rudder and motor
+3. center-of-gravity and center-of-buoyancy considerations of the electronic package
